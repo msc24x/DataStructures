@@ -29,6 +29,16 @@ void printit(CDLL<T>* L)
         T curr();
 */
 
+int map(char* cmd)
+{
+   char* cmds[] = {"default", "push", "pop", "first", "next", "seek", "contains", "pos", "curr", "perimeter", "cls", "exit"};
+   for(int t= 1 ; t< 12; t++)
+   {
+      if(cmds[t] == cmd)   return t;
+   }
+   return 0;
+}
+
 int main()
 {
     CDLL<int> d;
@@ -40,43 +50,43 @@ int main()
         cout << "\n/msc24x/- ";
         cin >> c;
 
-        switch (c):
+        switch (map(c)):
         {
-        case "push":
+        case map("push"):
             cin >> arg;
             d.push(arg);
             break;
-        case "pop":
+        case map("pop)":
             d.pop();
             break;
-        case "first":
+        case map("first"):
             cout << d.first;
             break;
-        case "next":
+        case map("next"):
             cout << d.next();
             break;
-        case "seek":
+        case map("seek"):
             cin >> arg;
             d.seek(arg);
             break;
-        case "contains":
+        case map("contains"):
             cin >> arg;
             cout << d.contains(arg);
             break;
-        case "pos":
+        case map("pos"):
             cin >> arg;
             cout << d.pos(arg);
             break;
-        case "curr":
+        case map("curr"):
             cout << d.curr();
             break;
-        case "perimeter":
+        case map("perimeter"):
             cout << d.perimeter;
             break;
-        case "cls":
+        case map("cls"):
             system(cls);
             break;
-        case "exit":
+        case map("exit"):
             return 0;
         default:
             cout << "unrecognized command\n";
