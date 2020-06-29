@@ -1,17 +1,17 @@
 #include <iostream>
-#include "include\structures.h"
+#include "structures.h"
 using namespace std;
 
-template<typename T>
-void printit(CDLL<T>* L)
+template <typename T>
+void printit(CDLL<T> *L)
 {
-    cout << '\n';
-    for(int t = 0; t < L->perimeter; t++)
-    {
-        cout  << ' ' << L->curr() << ' ';
-        L->seek(1);
-    }
-    cout << '\n';
+	cout << '\n';
+	for (int t = 0; t < L->perimeter; t++)
+	{
+		cout << ' ' << L->curr() << ' ';
+		L->seek(1);
+	}
+	cout << '\n';
 }
 
 /*
@@ -29,68 +29,70 @@ void printit(CDLL<T>* L)
         T curr();
 */
 
-int map(char* cmd)
+const int map(string cmd)
 {
-   char* cmds[] = {"default", "push", "pop", "first", "next", "seek", "contains", "pos", "curr", "perimeter", "cls", "exit"};
-   for(int t= 1 ; t< 12; t++)
-   {
-      if(cmds[t] == cmd)   return t;
-   }
-   return 0;
+	string cmds[] = {"default", "push", "pop", "first", "next", "seek", "contains", "pos", "curr", "perimeter", "cls", "exit"};
+	for (int t = 1; t < 11; t++)
+	{
+		if (cmds[t] == cmd)
+			return t;
+	}
+	return 0;
 }
 
 int main()
 {
-    CDLL<int> d;
-    char* c;
-    int arg;
+	CDLL<int> d;
+	string c;
+	int arg, intc;
 
-    while(1)
-    {
-        cout << "\n/msc24x/- ";
-        cin >> c;
+	while (1)
+	{
+		cout << "\n/msc24x/- ";
+		cin >> c;
+		intc = map(c);
 
-        switch (map(c)):
-        {
-        case map("push"):
-            cin >> arg;
-            d.push(arg);
-            break;
-        case map("pop)":
-            d.pop();
-            break;
-        case map("first"):
-            cout << d.first;
-            break;
-        case map("next"):
-            cout << d.next();
-            break;
-        case map("seek"):
-            cin >> arg;
-            d.seek(arg);
-            break;
-        case map("contains"):
-            cin >> arg;
-            cout << d.contains(arg);
-            break;
-        case map("pos"):
-            cin >> arg;
-            cout << d.pos(arg);
-            break;
-        case map("curr"):
-            cout << d.curr();
-            break;
-        case map("perimeter"):
-            cout << d.perimeter;
-            break;
-        case map("cls"):
-            system(cls);
-            break;
-        case map("exit"):
-            return 0;
-        default:
-            cout << "unrecognized command\n";
-        }
-    }
-    return 0;
+		switch (intc)
+			{
+			case 1:{
+				cin >> arg;
+				d.push(arg);
+				break;}
+		case 2:{
+			d.pop();
+			break;}
+		case 3:{
+			cout << d.first();
+			break;}
+		case 4:{
+			cout << d.next();
+			break;}
+		case 5:{
+			cin >> arg;
+			d.seek(arg);
+			break;}
+		case 6:{
+			cin >> arg;
+			cout << d.contains(arg);
+			break;}
+		case 7:{
+			cin >> arg;
+			cout << d.pos(arg);
+			break;}
+		case 8:{
+			cout << d.curr();
+			break;}
+		case 9:{
+			cout << d.perimeter;
+			break;}
+		case 10:{
+			//system(cls);
+			break;}
+		case 11:{
+			return 0;}
+		default:{
+			cout << "unrecognized command\n";}
+		}
+	}
+	return 0;
 }
